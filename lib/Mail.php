@@ -29,7 +29,7 @@ function generatePdf(string $templateFile, array $keysAndValues, string $pdfFile
         $smarty->assign($key,$value);
     }
     //$smarty->debugging = true;
-    $output = $smarty->fetch('mail-001.tpl');//display
+    $output = $smarty->fetch($templateFile);//display
 
     $options = new Options();
     $options->set('defaultFont', 'Courier');
