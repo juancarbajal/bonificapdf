@@ -43,6 +43,6 @@ function generatePdf(string $templateFile, array $keysAndValues, string $pdfFile
     return 0;
 }
 
-generatePdf('mail-001.tpl', array(), 'outputfile.pdf');
+//generatePdf('mail-001.tpl', array(), 'outputfile.pdf');
 
 //Close db 
