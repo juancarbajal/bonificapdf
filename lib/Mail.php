@@ -43,6 +43,29 @@ function generatePdf(string $templateFile, array $keysAndValues, string $pdfFile
     return 0;
 }
 
+/**
+ * Generate MailContent 
+ * @param string $template  template name 
+ * @param array $keysAndValues keys and values to replace in the template 
+ * @return string content from mail 
+ **/
+function generateAndGetMailContent(string $templateFile, array $keysAndValues){
+    define('SMARTY_DIR', dirname(__FILE__).'/smarty-3.1.33/libs/');
+    require_once(SMARTY_DIR . 'Smarty.class.php');
+    $smarty = new Smarty();
+    $smarty->setTemplateDir(dirname(__FILE__) . '/../var/template/');
+    $smarty->setCompileDir(dirname(__FILE__) . '/../var/smarty/templates_c/');
+    $smarty->setConfigDir(dirname(__FILE__) . '/../var/smarty/configs/');
+    $smarty->setCacheDir(dirname(__FILE__) . '/../var/smarty/cache/');
+    foreach($keysAndValues as $key=> $value){
+        $smarty->assign($key,$value);
+    }
+    //$smarty->debugging = true;
+    $output = $smarty->fetch($templateFile);//display
+    
+    return $output;
+
+}
 //generatePdf('mail-001.tpl', array(), 'outputfile.pdf');
 
 //Close db 

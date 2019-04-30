@@ -8,11 +8,11 @@
 
 'appInfo' => array(
 		  'appCompanyName' => 'Twinkle SAC',
-		  'appCompanyRuc' => '2040859490',
-		  'appCompanyAddress' => 'DIRECCION DE LA EMPRESA',
-		  'appName' => 'twinkle',
-		  'appPhone' => '952713764',
-		  'appMail' => 'admin@twinkle.pe',
+		  'appCompanyRuc' => '20604281424',
+		  'appCompanyAddress' => 'Av. Juan De Aliaga 427 Lima­, Lima,­ Magdalena Del Mar',
+		  'appName' => 'Twinkle',
+		  'appPhone' => '956 772 024',
+		  'appMail' => 'contabilidad@twinkle.pe',
 		  'appLogo' => 'logo.jpg'
 		  
 		  )
