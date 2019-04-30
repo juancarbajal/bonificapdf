@@ -1,18 +1,21 @@
 <?php
 require_once(dirname(__FILE__) . '/../lib/Mail.php');
+require dirname(__FILE__) . '/../lib/PHPMailer/src/Exception.php';
+require dirname(__FILE__) . '/../lib/PHPMailer/src/PHPMailer.php';
+require dirname(__FILE__) . '/../lib/PHPMailer/src/SMTP.php';
 
 if ($argc < 2 )
-    {
-        exit( "Usage: mail-001.php <period YYYY-mm>\n" );
-    } 
+{
+    exit( "Usage: mail-001.php <period YYYY-mm>\n" );
+} 
 
 $period = explode('-', $argv[1]);
 
 $options = include(dirname(__FILE__) . '/../config.php');
 
 $connection = new PDO("mysql:dbname=" . $options['database']['name'] . ";host=" . $options['database']['host'] . ';charset=utf8',
-$options['database']['user'],
-$options['database']['pass']);
+                      $options['database']['user'],
+                      $options['database']['pass']);
 $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); 
 
 $months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'];
@@ -62,7 +65,8 @@ foreach($rows as $rs){
         'docTotal' => 0.00,
         'docSubtotal' => 0.00,
         'docIgv' => 0.00, 
-        'detail' => array());
+        'detail' => array(),
+        'email' => $rs['email']);
     $groupData[$docNumber]['docTotal'] += $rs['totalPedido'];
     $groupData[$docNumber]['docSubtotal'] += $rs['subtotalPedido'];
     $groupData[$docNumber]['docIgv'] += $rs['igvPedido'];
@@ -70,12 +74,27 @@ foreach($rows as $rs){
     array_push($groupData[$docNumber]['detail'], $rs); 
 }
 
-print_r($groupData);
+//print_r($groupData);
 
 foreach($groupData as $rs){
     $mailContent = generateAndGetMailContent('mail-001.tpl',$rs);
     //echo $mailContent;
     generatePdf('mail-001.pdf.tpl', $rs, $rs['docNumber'] . '.pdf');
+
+    $mail = new PHPMailer;
+    $mail->isSMTP();
+    $mail->Host = $options['mail']['host'];
+    $mail->Port = $options['mail']['port'];
+    $mail->CharSet = $options['mail']['charset'];
+    $mail->setFrom($options['mail']['from'], $options['mail']['nameFrom']);
+    $mail->addAddress($rs['email']);
+    $mail->Subject = 'Contact form: TEST';
+    $mail->Body = $mailContent;
+    if (!$mail->send()) {
+            $msg .= "Mailer Error: " . $mail->ErrorInfo;
+        } else {
+            $msg .= "Message sent!";
+        }
 }
 /*
   $redemStore = '---';

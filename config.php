@@ -15,7 +15,14 @@
 		  'appMail' => 'contabilidad@twinkle.pe',
 		  'appLogo' => 'logo.jpg'
 		  
-		  )
+		  ),
+'mail' => array(
+	   'host' => '',
+	   'port' => '',
+	   'charset'=> 'utf-8',
+	   'from' => 'juancarbajal@gmail.com',
+	   'nameFrom' => 'Twinkle',
+)
 
 );
 ?>
