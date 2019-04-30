@@ -75,11 +75,13 @@ foreach($rows as $rs){
 }
 
 //print_r($groupData);
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 foreach($groupData as $rs){
     $mailContent = generateAndGetMailContent('mail-001.tpl',$rs);
     //echo $mailContent;
-    generatePdf('mail-001.pdf.tpl', $rs, $rs['docNumber'] . '.pdf');
+    $pdfFile = dirname(__FILE__) . '/../var/pdf/' . $rs['docNumber'] . '.pdf';
+    generatePdf('mail-001.pdf.tpl', $rs, $pdfFile);
 
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -90,6 +92,7 @@ foreach($groupData as $rs){
     $mail->addAddress($rs['email']);
     $mail->Subject = 'Contact form: TEST';
     $mail->Body = $mailContent;
+    $mail->addAttachment($pdfFile);
     if (!$mail->send()) {
             $msg .= "Mailer Error: " . $mail->ErrorInfo;
         } else {
