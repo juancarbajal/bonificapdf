@@ -17,6 +17,8 @@ $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 $months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'];
 $monthName = $months[$period[1]-1];
+$firstDate = new DateTime($period[0] . '-' . $period[1] . '-01');
+$lastDate = $firstDate->format('Y-m-t');
 
 $sql = "select
 concat(lpad(o.redeem_store_id,4,'0'),'" . $period[0] . $period[1] . "') as docNumber
@@ -51,6 +53,8 @@ foreach($rows as $rs){
     $docNumber = $rs['docNumber'];
     $groupData[$docNumber] = array(
         'docNumber' => $rs['docNumber'],
+        'docFrom' => $firstDate,
+        'docTo' => $lastDate,
         'companyName' => $rs['companyName'],
         'docCurrency' => 'Soles',
         'docCurrencySym' => 'S/.',
@@ -70,7 +74,7 @@ print_r($groupData);
 
 foreach($groupData as $rs){
     $mailContent = generateAndGetMailContent('mail-001.tpl',$rs);
-    echo $mailContent;
+    //echo $mailContent;
     generatePdf('mail-001.pdf.tpl', $rs, $rs['docNumber'] . '.pdf');
 }
 /*

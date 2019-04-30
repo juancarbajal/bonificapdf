@@ -32,7 +32,7 @@
 		<br>
 		<hr/>
 		<br/>
-		<table width="100%" border="1">
+		<table width="100%" border="1" style="border-collapse: collapse;">
 			<tr  bgcolor="#BCDDFF">
 				<th width="20%" align="center">Id Pedido</th>
 				<th width="20%" align="center">Fecha y Hora<br/> Redencion</th>
