@@ -13,7 +13,7 @@
 		  'appName' => 'Twinkle',
 		  'appPhone' => '956 772 024',
 		  'appMail' => 'contabilidad@twinkle.pe',
-		  'appLogo' => 'logo.jpg'
+		  'appLogo' => dirname(__FILE__) . '/var/static/logo-original-twinkle.jpg'
 		  
 		  ),
 'mail' => array(

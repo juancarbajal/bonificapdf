@@ -10,6 +10,7 @@ if ($argc < 2 )
 } 
 
 $period = explode('-', $argv[1]);
+$dtDate= new DateTime($period[0] . '-' . $period[1] . '-01');
 
 $options = include(dirname(__FILE__) . '/../config.php');
 
@@ -20,8 +21,8 @@ $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 $months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'];
 $monthName = $months[$period[1]-1];
-$firstDate = new DateTime($period[0] . '-' . $period[1] . '-01');
-$lastDate = $firstDate->format('Y-m-t');
+$firstDate = $dtDate->format('d/m/Y');
+$lastDate = $dtDate->format('t/m/Y');
 
 $sql = "select
 concat(lpad(o.redeem_store_id,4,'0'),'" . $period[0] . $period[1] . "') as docNumber
@@ -56,6 +57,7 @@ foreach($rows as $rs){
     $docNumber = $rs['docNumber'];
     $groupData[$docNumber] = array(
         'docNumber' => $rs['docNumber'],
+        'docYear' => $period[0],
         'docFrom' => $firstDate,
         'docTo' => $lastDate,
         'companyName' => $rs['companyName'],
@@ -93,11 +95,11 @@ foreach($groupData as $rs){
     $mail->Subject = 'Contact form: TEST';
     $mail->Body = $mailContent;
     $mail->addAttachment($pdfFile);
-    if (!$mail->send()) {
+    /*if (!$mail->send()) {
             $msg .= "Mailer Error: " . $mail->ErrorInfo;
         } else {
             $msg .= "Message sent!";
-        }
+            }*/
 }
 /*
   $redemStore = '---';

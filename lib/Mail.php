@@ -4,11 +4,12 @@ require_once dirname(__FILE__).'/dompdf/lib/html5lib/Parser.php';
 //require_once dirname(__FILE__).'/dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
 //require_once dirname(__FILE__).'/dompdf/lib/php-svg-lib/src/autoload.php';
 require_once dirname(__FILE__).'/dompdf/src/Autoloader.php';
+require_once dirname(__FILE__).'/php-svg-lib-master/src/autoload.php';
 Dompdf\Autoloader::register();
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-
+define("DOMPDF_ENABLE_REMOTE", false);
 error_reporting(E_ALL&~E_NOTICE);
 /**
  * Generate PDF File from HTML 
@@ -33,6 +34,7 @@ function generatePdf(string $templateFile, array $keysAndValues, string $pdfFile
 
     $options = new Options();
     $options->set('defaultFont', 'Courier');
+    $options->set('enable_remote', false);
     $dompdf = new Dompdf($options);
     $dompdf->loadHtml($output);
     $dompdf->setPaper('A4', 'landscape');

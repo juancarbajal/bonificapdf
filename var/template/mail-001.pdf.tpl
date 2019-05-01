@@ -4,7 +4,7 @@
 	<body>
 		<table width="100%">
 			<tr>
-				<td width="50%">{$appLogo}
+				<td width="50%"><img src="{$appLogo}"/>
 				</td>
 				<td width="50%" align="right">Detalle {$docNumber} <br/>
 				  Validaciones del {$docFrom} al {$docTo} del {$docYear}<br/>
