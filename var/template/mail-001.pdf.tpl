@@ -1,13 +1,23 @@
 <html>
   <head>
+	<script type="text/css">
+	  @page {
+	  size: 21cm 29.7cm;
+	  margin: 2cm;
+      }
+	  body {
+	  padding: .5in;
+	  margin: 2cm; 
+	  }
+	  </script>
   <head>
 	<body>
 		<table width="100%">
 			<tr>
-				<td width="50%"><img src="{$appLogo}"/>
+				<td width="40%"><img src="{$appLogo}"/>
 				</td>
-				<td width="50%" align="right">Detalle {$docNumber} <br/>
-				  Validaciones del {$docFrom} al {$docTo} del {$docYear}<br/>
+				<td width="60%" align="right">Detalle {$docNumber}<br/>
+				  Validaciones del {$docFrom} al {$docTo}<br/>
 				  {$companyName}
 				</td>
 			</tr>

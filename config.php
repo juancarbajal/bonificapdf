@@ -9,7 +9,7 @@
 'appInfo' => array(
 		  'appCompanyName' => 'Twinkle SAC',
 		  'appCompanyRuc' => '20604281424',
-		  'appCompanyAddress' => 'Av. Juan De Aliaga 427 Lima­, Lima,­ Magdalena Del Mar',
+		  'appCompanyAddress' => 'Av. Juan De Aliaga 427 Lima, Lima, Magdalena Del Mar',
 		  'appName' => 'Twinkle',
 		  'appPhone' => '956 772 024',
 		  'appMail' => 'contabilidad@twinkle.pe',
@@ -17,11 +17,14 @@
 		  
 		  ),
 'mail' => array(
-	   'host' => '',
-	   'port' => '',
+	   'host' => 'smtp.gmail.com',
+	   'port' => '587',
 	   'charset'=> 'utf-8',
-	   'from' => 'juancarbajal@gmail.com',
+	   'from' => 'twinkleproveedores@gmail.com', //'reportes@twinklelatam.com',
 	   'nameFrom' => 'Twinkle',
+	   'reply' => 'no-reply@twinklelatam.com',
+	   'cc' => 'ljordan@twinklelatam.com',
+	   'password' => 'Twinkle*2019' //'Seidor2019$'
 )
 
 );

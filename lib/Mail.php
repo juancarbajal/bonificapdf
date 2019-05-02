@@ -37,7 +37,7 @@ function generatePdf(string $templateFile, array $keysAndValues, string $pdfFile
     $options->set('enable_remote', false);
     $dompdf = new Dompdf($options);
     $dompdf->loadHtml($output);
-    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
     $outputPDF = $dompdf->output();
     file_put_contents($pdfFile, $outputPDF);
@@ -69,5 +69,9 @@ function generateAndGetMailContent(string $templateFile, array $keysAndValues){
 
 }
 //generatePdf('mail-001.tpl', array(), 'outputfile.pdf');
+
+function isValidEmail($str) {
+    return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
+}
 
 //Close db 
