@@ -1,9 +1,9 @@
 <?php return  array (
 'database' => array(
 		   'host' => 'localhost',
-		   'name' => 'prod_bonificacion',
-		   'user'=> 'jcarbajal',
-		   'pass'=>'P@ssw0rd'
+		   'name' => 'db_test_bonificacion',
+		   'user'=> '*****',
+		   'pass'=>'******'
 		   ),
 
 'appInfo' => array(
@@ -20,11 +20,11 @@
 	   'host' => 'smtp.gmail.com',
 	   'port' => '587',
 	   'charset'=> 'utf-8',
-	   'from' => 'twinkleproveedores@gmail.com', //'reportes@twinklelatam.com',
+	   'from' => 'twinkleproveedores@gmail.com', 
 	   'nameFrom' => 'Twinkle',
 	   'reply' => 'no-reply@twinklelatam.com',
-	   'cc' => 'ljordan@twinklelatam.com',
-	   'password' => 'Twinkle*2019' //'Seidor2019$'
+	   'cc' => 'test@twinklelatam.com',
+	   'password' => '******'
 )
 
 );
