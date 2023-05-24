@@ -1,18 +1,18 @@
 <?php return  array (
 'database' => array(
 		   'host' => 'localhost',
-		   'name' => 'db_test_bonificacion',
-		   'user'=> '*****',
+		   'name' => 'dbname',
+		   'user'=> '******',
 		   'pass'=>'******'
 		   ),
 
 'appInfo' => array(
-		  'appCompanyName' => 'Twinkle SAC',
-		  'appCompanyRuc' => '20604281424',
-		  'appCompanyAddress' => 'Av. Juan De Aliaga 427 Lima, Lima, Magdalena Del Mar',
-		  'appName' => 'Twinkle',
-		  'appPhone' => '956 772 024',
-		  'appMail' => 'contabilidad@twinkle.pe',
+		  'appCompanyName' => 'XXX SAC',
+		  'appCompanyRuc' => '123456789',
+		  'appCompanyAddress' => 'Direccion',
+		  'appName' => 'XXX',
+		  'appPhone' => '99999999',
+		  'appMail' => 'admin@xxx.com',
 		  'appLogo' => dirname(__FILE__) . '/var/static/logo-original-twinkle.jpg'
 		  
 		  ),
@@ -20,10 +20,10 @@
 	   'host' => 'smtp.gmail.com',
 	   'port' => '587',
 	   'charset'=> 'utf-8',
-	   'from' => 'twinkleproveedores@gmail.com', 
-	   'nameFrom' => 'Twinkle',
-	   'reply' => 'no-reply@twinklelatam.com',
-	   'cc' => 'test@twinklelatam.com',
+	   'from' => 'xxx@gmail.com', 
+	   'nameFrom' => 'xxx',
+	   'reply' => 'no-reply@xxx.com',
+	   'cc' => 'test@xxx.com',
 	   'password' => '******'
 )
 
