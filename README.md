@@ -1,5 +1,5 @@
 # Bonifica PDF
-Sistema de envio de reportes por empresa y periodo de ventas para sistema de beneficios 
+Sistema de envio de reportes por empresa y periodo de los beneficios utilizados por sus clientes.
 
 ## Requisitos
 - PHP 7.2
